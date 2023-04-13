@@ -4,6 +4,9 @@ import { authUser } from '../middlewares/Auth';
 
 const router = express.Router();
 
+router.get('/', (req, res) =>
+  res.json('Olá, você está usando a api de envio de emails')
+);
 router.post('/user', UsersController.userValidation, UsersController.save);
 router.post('/login', UsersController.loginValidation, UsersController.signin);
 
