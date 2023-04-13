@@ -4,5 +4,6 @@ export const errors = {
   emailAlreadyExists: 'Email address already exists',
   // sucessSendEmail: 'Email sent successfully',
   typeEmailRequired: 'It must be a valid email address',
-  userNotExists: 'User does not exist'
+  userNotExists: 'User does not exist',
+  forbidden: "this resource isn't available if you're not authenticated"
 };

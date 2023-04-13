@@ -10,24 +10,30 @@ export const authUser = async (
   next: NextFunction
 ) => {
   const { authorization } = req.headers;
+  try {
+    if (!authorization) throw new Error(`Invalid authorization header`);
 
-  if (!authorization) throw new Error(`Invalid authorization header`);
+    const token = authorization.split(' ')[1];
 
-  const token = authorization.split(' ')[1];
+    const userPayload = verify(
+      token,
+      <string>process.env.SECRET_KEY
+    ) as JwtPayload;
 
-  const userPayload = verify(
-    token,
-    <string>process.env.SECRET_KEY
-  ) as JwtPayload;
+    const user = await queryEmail(userPayload.email);
 
-  const user = await queryEmail(userPayload.email);
+    if (!user) {
+      return res
+        .status(StatusCodes.NOT_FOUND)
+        .json({ message: errors.userNotExists });
+    }
+    req.user = user;
 
-  if (!user) {
+    next();
+  } catch (error) {
+    console.log(error);
     return res
-      .status(StatusCodes.NOT_FOUND)
-      .json({ message: errors.userNotExists });
+      .status(StatusCodes.FORBIDDEN)
+      .json({ message: errors.forbidden });
   }
-  req.user = user;
-
-  next();
 };
