@@ -9,7 +9,8 @@ const config: Knex.Config = {
     host: env.DB_HOST,
     password: env.DB_PASSWORD,
     database: env.DB_DATABASE
-  }
+  },
+ssl: { rejectUnauthorized: false }
 };
 
 export const query = knex(config);
