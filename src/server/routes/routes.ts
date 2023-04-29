@@ -13,7 +13,7 @@ router.post('/login', UsersController.loginValidation, UsersController.signin);
 router.use(authUser);
 
 router.post(
-  '/user/sent-email',
+  '/user/send-email',
   EmailsController.fieldsSendEmailValidation,
   EmailsController.sendOneEmail
 );
