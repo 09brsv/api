@@ -17,7 +17,7 @@ export const fieldsSendEmailValidation = validation((schema) =>
     yup.object({
       from: yup.object().optional(),
       to: yup.string().email().required(),
-      subject: yup.string().min(3).required(),
+      subject: yup.string().required(),
       text: yup.string().required()
     })
   )
@@ -46,6 +46,13 @@ export const getEmails = async (req: Request, res: Response) => {
   if (!req.user.id) throw new Error();
 
   const emails = await getAll(req.user.id);
-
-  return res.json(emails);
+  const dataEmailsChanged = emails.map((email) => {
+    return {
+      ...email,
+      date: `${email.date.getDate()}/${
+        email.date.getMonth() + 1
+      }/${email.date.getFullYear()}`
+    };
+  });
+  return res.json(dataEmailsChanged);
 };
