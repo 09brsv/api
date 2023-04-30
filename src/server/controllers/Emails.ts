@@ -30,7 +30,15 @@ export const sendOneEmail = async (req: Request, res: Response) => {
     return res.status(StatusCodes.BAD_REQUEST).json(result);
   }
   const { text: body, to: email, subject } = result;
-
+  if (subject) {
+    await saveEmail({
+    body,
+    email,
+    subject: "Sem assunto"
+    date: new Date(),
+    id_user: req.user.id
+  });
+    } else{
   await saveEmail({
     body,
     email,
@@ -38,7 +46,7 @@ export const sendOneEmail = async (req: Request, res: Response) => {
     date: new Date(),
     id_user: req.user.id
   });
-
+}
   res.status(StatusCodes.CREATED).json({ message: 'Email sent successfully' });
 };
 
