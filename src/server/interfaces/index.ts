@@ -9,6 +9,6 @@ export interface IUserProps {
 export interface IFieldsFromSendEmail {
   from?: Partial<IUser>;
   to: string;
-  subject: string;
+  subject?: string;
   text: string;
 }

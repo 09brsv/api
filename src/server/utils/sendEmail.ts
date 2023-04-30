@@ -22,7 +22,7 @@ export const send = async (
   const msg = {
     from: `${name} <devbrunobatista@gmail.com>`,
     to,
-    subject: subject ?? 'Sem assunto',
+    subject: subject ? subject : 'Sem assunto',
     text
   };
 
