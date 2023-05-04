@@ -4,7 +4,7 @@ import { StatusCodes } from 'http-status-codes';
 
 import { IFieldsFromSendEmail } from '../interfaces';
 import { validation } from '../middlewares/Validation';
-import { send } from '../utils/sendEmail';
+import { send } from '../utils/sendEmailTransport';
 import { getAll, saveEmail } from '../database/repositories/Email';
 
 type TUserSender = {
