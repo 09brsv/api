@@ -93,6 +93,7 @@ Aqui estão os endpoints disponíveis na API:
 
 # Configuração
 Para configurar o aplicativo, você precisará definir as seguintes variáveis de ambiente no arquivo .env:
+
 * PORT - A porta que você quer usar no seu servidor local
 * DB_USER - O usuário do banco de dados
 * DB_HOST - O endereço do servidor do banco de dados
@@ -104,7 +105,7 @@ Para configurar o aplicativo, você precisará definir as seguintes variáveis d
 * MAIL_PASS - A senha do servidor SMTP
 * SECRET_KEY - A assinatura da autenticação do usuário criado
 
----
 ## Contato
+
 
 Se você tiver alguma dúvida ou sugestão sobre este projeto, sinta-se à vontade para entrar em contato comigo através do meu [Email](mailto:devbrunobatista@gmail.com) ou no [Linkedin](https://www.linkedin.com/in/bruno-batista09brsv/)
